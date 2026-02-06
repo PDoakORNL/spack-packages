@@ -47,6 +47,13 @@ _versions = {
             "https://developer.download.nvidia.com/devtools/repos/rhel8/x86_64/nsight-systems-2024.1.1-2024.1.1.59_3380207-0.x86_64.rpm",
         ),
     },
+    "2026.1.1": {
+        "Linux-x86_64": (
+            "f3993124f5e386e3a604653bdbe8e197d41e084da3ba18f9f18f4bcd2991486d",
+            "https://developer.nvidia.com/downloads/assets/tools/secure/nsight-systems/2026_1/NsightSystems-linux-cli-public-2026.1.1.204-3717666.rpm"
+
+        )
+    }
 }
 
 
@@ -83,7 +90,7 @@ class NvidiaNsightSystems(Package):
 
     def install(self, spec, prefix):
         bsdtar = which("bsdtar")
-        rpm_file = glob(join_path(self.stage.source_path, "nsight-systems*.rpm"))[0]
+        rpm_file = self.stage.archive_file
         params = ["-x", "-f", rpm_file]
         ver = prefix.split("/")[-1].split("-")[-2]
         bsdtar(*params)
