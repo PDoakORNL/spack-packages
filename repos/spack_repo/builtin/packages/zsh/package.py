@@ -47,7 +47,7 @@ class Zsh(AutotoolsPackage):
 
     conflicts("+lmod", when="~etcdir", msg="local etc required to setup env for lmod")
 
-    patch("pointer-types.patch", when="@5.6.2:")
+    # patch("pointer-types.patch", when="@5.6.2:")
 
     def url_for_version(self, version):
         if version <= Version("5.9.0.0"):
